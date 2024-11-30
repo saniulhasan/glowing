@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Glowing Button with Rotating Border</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1a1a1a;
+            font-family: Arial, sans-serif;
+        }
+
+        .glowing-button {
+            position: relative;
+            padding: 16px 32px;
+            font-size: 18px;
+            color: #fff;
+            background-color: transparent;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .glowing-button::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff00ff, #00ff00, #00ffff, #ff00ff);
+            background-size: 400% 400%;
+            z-index: -1;
+            border-radius: 50px;
+            animation: glowing 20s linear infinite;
+        }
+
+        .glowing-button::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            background: linear-gradient(45deg, #ff00ff, #00ff00, #00ffff, #ff00ff);
+            background-size: 400% 400%;
+            border-radius: 48px;
+            z-index: -1;
+            animation: backgroundGlow 10s ease infinite;
+        }
+
+        .glowing-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .glowing-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+        }
+
+        .glowing-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes glowing {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 400% 0;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        @keyframes backgroundGlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="glowing-button">
+        <span>Animated Glowing Button</span>
+    </button>
+</body>
+</html>
+
